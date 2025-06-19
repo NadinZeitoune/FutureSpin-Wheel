@@ -1,29 +1,54 @@
 body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 0px;
-    }
-    canvas {
-      border: 0px solid #ccc;
-    }
-    #wheel-container {
-      position: relative;
-      display: inline-block;
-	  /* background-color: #84ACCE; Replace with your desired color */
-	  padding: 5px; /* Adjust padding if needed */
-    }
-    #pointer {
-      width: 0;
-      height: 0;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      border-right: 20px solid green; /* triangle pointing left */
-      position: absolute;
-      top: 50%;
-      left: 100%; /* move to right side of canvas */
-      transform: translateY(-50%);
-      z-index: 10;
-    }
-    .checkbox-group {
-      margin: 20px;
-    }
+	font-family: sans-serif;
+    text-align: center;
+	margin-top: 0px;
+}
+canvas {
+	border: 0px solid #ccc;
+}
+
+
+#center-wrapper {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto; /* horizontal centering */
+  height: 300px;
+}
+
+#wheel-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+#pointer {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 20px solid green;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+#text-box {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 20px;
+  width: 250px;
+  /*height: 100px;*/
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-group {
+	margin: 15px;
+}
