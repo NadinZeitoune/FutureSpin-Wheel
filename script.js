@@ -6,7 +6,9 @@ const canvas = document.getElementById('wheel');
     const group1 = ['BG1', 'BG2', 'BG3', 'BG4', 'BG5'];
     const group2 = ['Seasons1', 'Seasons2', 'Seasons3', 'Seasons4'];
     const group3 = ['City Living1', 'City Living2'];
-    const group4 = ['Cats & Dogs1', 'Cats & Dogs2', 'Cats & Dogs3', 'Cats & Dogs4'];
+
+    const group4 = ['this is new1', 'so is this2', 'whats up3', 'yayyy4'];
+    //const group4 = ['Cats & Dogs1', 'Cats & Dogs2', 'Cats & Dogs3', 'Cats & Dogs4'];
 	
 	const secretMessages = {
 	 'City Living1': { message: 'Keep up the great work, Alice!', url: 'https://google.com' },
