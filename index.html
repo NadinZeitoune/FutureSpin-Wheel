@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Name Wheel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Name Wheel</h1>
+
+  <div class="checkbox-group">
+    <label><input type="checkbox" id="group1" /> Base Game</label>
+    <label><input type="checkbox" id="group2" /> Seasons</label>
+    <label><input type="checkbox" id="group3" /> City Living</label>
+    <label><input type="checkbox" id="group4" /> Cats & Dogs</label>
+  </div>
+
+  <div id="wheel-container">
+    <div id="pointer"></div>
+    <canvas id="wheel" width="300" height="300"></canvas>
+  </div>
+
+  <br><br>
+  <button onclick="spin()">Spin</button>
+  <h2 id="result"></h2>
+  <button id="removeButton" style="display: none;" onclick="removeChosenName()">Remove Chosen Name</button>
+  <button id="clearHistoryButton">Clear History</button>
+  <div id="spinHistory" style="margin-top: 20px;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 0px;
+    }
+    canvas {
+      border: 0px solid #ccc;
+    }
+    #wheel-container {
+      position: relative;
+      display: inline-block;
+	  /* background-color: #84ACCE; Replace with your desired color */
+	  padding: 5px; /* Adjust padding if needed */
+    }
+    #pointer {
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-right: 20px solid green; /* triangle pointing left */
+      position: absolute;
+      top: 50%;
+      left: 100%; /* move to right side of canvas */
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    .checkbox-group {
+      margin: 20px;
+    }
