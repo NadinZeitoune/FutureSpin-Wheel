@@ -9,9 +9,7 @@
   <h1>Name Wheel</h1>
 
   <div>
-	<button onclick="spin()">Spin</button>
 	<button id="removeButton" style="display: none;" onclick="removeChosenName()">Remove Chosen Name</button>
-	<button id="clearHistoryButton">Reset History & Packs</button>
   </div>
   
   <br>
@@ -19,20 +17,26 @@
   <div id="center-wrapper">
 	<div id="wheel-container">
 		<div id="pointer"></div>
-		<canvas id="wheel" width="300" height="300"></canvas>
+		<canvas id="wheel" width="400" height="400"></canvas>
+		<button id="spin-button" onclick="spin()">Spin</button>
 	</div>
 	<div id="text-box">
 		<h5 id="result">Spin result will appear here</h5>
 	</div>
   </div>
-  
   <br>
-  
+  <button id="clearHistoryButton">Reset History & Packs</button>
+  <br>
+    
   <div class="checkbox-group" id="checkbox-div">
     <!--<label><input type="checkbox" id="group1" /> Base Game</label>-->
   </div>
-  
-  <div id="spinHistory" style="margin-top: 20px;"></div>
+ 
+  <div id="center-wrapper2">
+    <div id="spinHistory" style="margin-top: 20px;" align="left"></div> </div>
+	<!--<div id="history-box">
+		<div id="spinHistory" style="margin: 10px;" align="left" ></div>
+	</div>-->
 
 <!-- This is the list of the script files -->
   <script src="groups data.js"></script>

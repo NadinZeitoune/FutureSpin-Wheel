@@ -83,7 +83,7 @@ function drawWheel() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
-  const radius = 150;
+  const radius = 200;
   const arcSize = 2 * Math.PI / names.length;
 
   for (let i = 0; i < names.length; i++) {
@@ -103,8 +103,9 @@ function drawWheel() {
     ctx.rotate(startAngle + arcSize / 2);
     ctx.textAlign = "right";
     ctx.fillStyle = "#000";
-    ctx.font = "12px Arial";
-    ctx.fillText(names[i], radius - 10, 5);
+    //ctx.font = "20px Arial";
+	ctx.font = ctx.measureText(names[i]).width > 140 ? '15px Arial' : '20px Arial';
+    ctx.fillText(names[i], radius - 10, 5, 140);
     ctx.restore();
   }
 
@@ -147,10 +148,15 @@ function drawRotatedWheel(deg) {
   ctx.restore();
 }
 
-function disableCheckboxes(toDisable){
+function disableCheckboxesAndButtons(toDisable){
 	for (let i = 1; i <= numOfGroups; i++){
-	document.getElementById('group' + i).disabled = toDisable;
-  }
+		document.getElementById('group' + i).disabled = toDisable;
+	}
+  
+	document.getElementById('clearHistoryButton').disabled = toDisable;
+	
+	document.getElementById('spin-button').disabled = toDisable;
+	document.getElementById('spin-button').style.cursor = toDisable ? "auto" : "pointer";
 }
 
 function spin() {
@@ -161,7 +167,7 @@ function spin() {
   }
   
   // Disable checkboxes
-  disableCheckboxes(true);
+  disableCheckboxesAndButtons(true);
   
   spinning = true;
   resultEl.textContent = '';
@@ -217,7 +223,7 @@ function spin() {
 	  displayHistory();
 	  
 	  // Re-enable checkboxes after spin finishes
-	  disableCheckboxes(false);
+	  disableCheckboxesAndButtons(false);
     }
   }
 
@@ -229,10 +235,12 @@ function displayHistory() {
 	historyContainer.innerHTML = '';  // Clear previous history
 	
 	spinHistory.forEach((spin, index) => {
-		if(index < spinHistory.length - 5) return;
+		// Set amount of history records thta shown
+		if(index < spinHistory.length - 10) return;
 	
 		const spinElement = document.createElement('div');
-		spinElement.innerHTML = `Gen #${index + 1} (${spin.timestamp}): <strong>${spin.name}</strong> - `;
+		//spinElement.innerHTML = `Gen #${index + 1} (${spin.timestamp}): <strong>${spin.name}</strong> - `;
+		spinElement.innerHTML = `${spin.timestamp} Gen #${index + 1}: <strong>${spin.name}</strong> - `;
 		if (spin.message !== 'No secret message available for this name.') {
 		spinElement.innerHTML += `<a href="${spin.url}" target="_blank" style="color: blue; text-decoration: underline;">${spin.message}</a>`;
 		} else {
@@ -243,7 +251,15 @@ function displayHistory() {
 }
 
 function addSpinToHistory(name, message, url) {
-	const timestamp = new Date().toLocaleString();  // Get the current date and time
+	const timestamp = new Date().toLocaleString("en-GB",{
+		//dateStyle: 'short',
+		//timeStyle: 'short',
+		year: 'numeric',
+		month: 'short',
+		day: 'numeric',
+		//hour: '2-digit',
+		//minute: '2-digit',
+		});  // Get the current date and time
 	// Add the new spin to history
 	spinHistory.push({ name, message, url, timestamp });
 	
