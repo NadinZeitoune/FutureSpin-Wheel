@@ -10,15 +10,22 @@ canvas {
 
 #center-wrapper {
   position: relative;
-  width: fit-content;
+  //width: fit-content;
+  width: 410px;
   margin: 0 auto; /* horizontal centering */
-  height: 400px;
+  height: 460px;
+  //background: #00ff00;
+  background-image: url("media2.png");
+  background-repeat: no-repeat;
+  padding-top:5px;
 }
 
 #wheel-container {
   position: relative;
   width: 400px;
   height: 400px;
+  margin: 0 auto;
+  //background: #ff0000;
 }
 
 #pointer {
@@ -40,6 +47,7 @@ canvas {
   left: 100%;
   transform: translateY(-50%);
   margin-left: 20px;
+  margin-top: -30px;
   width: 250px;
   /*height: 100px;*/
   background: #f9f9f9;
@@ -83,6 +91,7 @@ canvas {
   position: absolute;
   top: 50%;
   left: 50%;
+  opacity: 1;
   transform: translate(-50%, -50%);
   z-index: 5;
   width: 80px;

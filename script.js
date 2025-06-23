@@ -93,7 +93,7 @@ function drawWheel() {
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-    ctx.fillStyle = `hsl(${i * 360 / names.length}, 70%, 60%)`;
+    ctx.fillStyle = `hsla(${i * 360 / names.length}, 70%, 60%, 0.6)`;
     ctx.fill();
     ctx.stroke();
 
