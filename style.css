@@ -39,6 +39,7 @@ canvas {
   left: 100%;
   transform: translateY(-50%);
   z-index: 10;
+  margin-left: 5px;
 }
 
 #text-box {
@@ -97,9 +98,12 @@ canvas {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #4CAF50;
+  background-color: #000000;/*4CAF50*/
+  background-image: url("ball.png");
+  background-repeat: no-repeat;
+  background-size: 77.5px;
   color: white;
-  border: 2px solid #449C47;
+  border: 1px solid #000000;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
