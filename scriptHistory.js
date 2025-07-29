@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     historyContainer.innerHTML = ''; // Clear previous history
 
     spinHistory.forEach((spin, index) => {
-      if (index < spinHistory.length - 10) return; // Show only last 10
+      //if (index < spinHistory.length - 10) return; // Show only last 10 (Comment line if want all)
 
       const spinElement = document.createElement('div');
       spinElement.innerHTML = `${spin.timestamp} Gen #${index + 1}: <strong>${spin.name}</strong> - `;
@@ -32,12 +32,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (savedHistory) {
       spinHistory = JSON.parse(savedHistory);
-      alert("Data loaded:\n" + JSON.stringify(spinHistory, null, 2));
     } else {
       spinHistory = [];
-      alert("No data found");
     }
 
     displayHistory();
   }
+  
+  // Clear history and reset localStorage
+  document.getElementById('clearHistoryButton').addEventListener('click', function() {
+	  // Clear the spin history
+	  spinHistory = [];
+	  localStorage.removeItem('spinHistory');  // Remove history from localStorage
+	  
+	  // Clear the displayed history
+	  displayHistory();
+  });
+  
+  
+  document.getElementById('refreshHistoryButton').addEventListener('click', function() {
+	  loadState();
+  });
 });

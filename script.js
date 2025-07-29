@@ -10,7 +10,7 @@ let spinHistory = [];
 let spinning = false;
 
 // Clear history and reset localStorage
-document.getElementById('clearHistoryButton').addEventListener('click', function() {
+/*document.getElementById('clearHistoryButton').addEventListener('click', function() {
 	// Clear the spin history
 	spinHistory = [];
 	localStorage.removeItem('spinHistory');  // Remove history from localStorage
@@ -26,7 +26,7 @@ document.getElementById('clearHistoryButton').addEventListener('click', function
 	
 	// Reset the wheel
 	updateNames();
-});
+});*/
 
 function addCheckbox(index){
 	//<label><input type="checkbox" id="group1" /> Base Game</label>
@@ -153,7 +153,7 @@ function disableCheckboxesAndButtons(toDisable){
 		document.getElementById('group' + i).disabled = toDisable;
 	}
   
-	document.getElementById('clearHistoryButton').disabled = toDisable;
+	//document.getElementById('clearHistoryButton').disabled = toDisable;
 	
 	document.getElementById('spin-button').disabled = toDisable;
 	document.getElementById('spin-button').style.cursor = toDisable ? "auto" : "pointer";
@@ -220,7 +220,7 @@ function spin() {
 	  saveState(); // Save history and checkbox states to localStorage
 	  
 	  // Display the history of spins
-	  displayHistory();
+	  //displayHistory();
 	  
 	  // Re-enable checkboxes after spin finishes
 	  disableCheckboxesAndButtons(false);
@@ -260,6 +260,17 @@ function addSpinToHistory(name, message, url) {
 		//hour: '2-digit',
 		//minute: '2-digit',
 		});  // Get the current date and time
+		
+	// Load the spin history from localStorage
+	const savedHistory = localStorage.getItem('spinHistory');
+	if (savedHistory) {
+		spinHistory = JSON.parse(savedHistory);
+	} else {
+		// Default history for first-time visitors
+		spinHistory = [];
+	}
+		
+		
 	// Add the new spin to history
 	spinHistory.push({ name, message, url, timestamp });
 	
@@ -268,7 +279,7 @@ function addSpinToHistory(name, message, url) {
 	//	spinHistory.shift();  // Remove the first (oldest) entry if there are more than 5
 	//}
 	
-	displayHistory();  // Update the display
+	//displayHistory();  // Update the display
 }
 
 function removeChosenName() {
@@ -301,7 +312,7 @@ function saveState() {
 
 // Load state from localStorage
 function loadState() {
-	// Load the spin history from localStorage
+	/*// Load the spin history from localStorage
 	const savedHistory = localStorage.getItem('spinHistory');
 	if (savedHistory) {
 		spinHistory = JSON.parse(savedHistory);
@@ -313,9 +324,9 @@ function loadState() {
 		//document.getElementById('group2').checked = true;
 		//document.getElementById('group3').checked = true;
 		//document.getElementById('group4').checked = true;
-	}
+	}*/
 	
-	displayHistory();  // Re-render the history
+	//displayHistory();  // Re-render the history
 	
 	for (let i = 1; i <= numOfGroups; i++){
 		
