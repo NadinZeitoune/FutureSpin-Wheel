@@ -1,49 +1,43 @@
-
+// Fires as soon as the DOM is ready (preferred for your case)
 document.addEventListener("DOMContentLoaded", function () {
-let spinHistory = [];
+  let spinHistory = [];
 
+  // Load state and display history immediately after DOM is ready
+  loadState();
 
-window.onload = function() {
-	loadState();  // Load the saved state (history + checkbox states)
-};
+  // Function to display the history
+  function displayHistory() {
+    const historyContainer = document.getElementById('spinHistory');
+    historyContainer.innerHTML = ''; // Clear previous history
 
-function displayHistory() {
-	const historyContainer = document.getElementById('spinHistory');
-	historyContainer.innerHTML = '';  // Clear previous history
-	
-	spinHistory.forEach((spin, index) => {
-		// Set amount of history records thta shown
-		if(index < spinHistory.length - 10) return;
-	
-		const spinElement = document.createElement('div');
-		//spinElement.innerHTML = `Gen #${index + 1} (${spin.timestamp}): <strong>${spin.name}</strong> - `;
-		spinElement.innerHTML = `${spin.timestamp} Gen #${index + 1}: <strong>${spin.name}</strong> - `;
-		if (spin.message !== 'No secret message available for this name.') {
-		spinElement.innerHTML += `<a href="${spin.url}" target="_blank" style="color: blue; text-decoration: underline;">${spin.message}</a>`;
-		} else {
-		spinElement.innerHTML += spin.message;  // Plain text when no message is available
-		}
-		historyContainer.appendChild(spinElement);
-	});
-}
+    spinHistory.forEach((spin, index) => {
+      if (index < spinHistory.length - 10) return; // Show only last 10
 
-// Load state from localStorage
-function loadState() {
-	// Load the spin history from localStorage
-	const savedHistory = localStorage.getItem('spinHistory');
-	if (savedHistory) {
-		spinHistory = JSON.parse(savedHistory);
-		alert(spinHistory);
-	} else {
-		// Default history for first-time visitors
-		spinHistory = [];
-		alert("there is no data found");
-		//document.getElementById('group1').checked = true;
-		//document.getElementById('group2').checked = true;
-		//document.getElementById('group3').checked = true;
-		//document.getElementById('group4').checked = true;
-	}
-	
-	displayHistory();  // Re-render the history
-}
+      const spinElement = document.createElement('div');
+      spinElement.innerHTML = `${spin.timestamp} Gen #${index + 1}: <strong>${spin.name}</strong> - `;
+
+      if (spin.message !== 'No secret message available for this name.') {
+        spinElement.innerHTML += `<a href="${spin.url}" target="_blank" style="color: blue; text-decoration: underline;">${spin.message}</a>`;
+      } else {
+        spinElement.innerHTML += spin.message;
+      }
+
+      historyContainer.appendChild(spinElement);
+    });
+  }
+
+  // Function to load from localStorage
+  function loadState() {
+    const savedHistory = localStorage.getItem('spinHistory');
+
+    if (savedHistory) {
+      spinHistory = JSON.parse(savedHistory);
+      alert("Data loaded:\n" + JSON.stringify(spinHistory, null, 2));
+    } else {
+      spinHistory = [];
+      alert("No data found");
+    }
+
+    displayHistory();
+  }
 });
