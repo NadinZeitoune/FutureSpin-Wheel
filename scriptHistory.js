@@ -1,12 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-const canvas = document.getElementById('wheel');
-const ctx = canvas.getContext('2d');
-const resultEl = document.getElementById('result');
-const removeButton = document.getElementById('removeButton');
-const checkboxDiv = document.getElementById('checkbox-div');
-
-let names = [];
 let spinHistory = [];
 
 
@@ -40,10 +33,11 @@ function loadState() {
 	const savedHistory = localStorage.getItem('spinHistory');
 	if (savedHistory) {
 		spinHistory = JSON.parse(savedHistory);
+		alert(spinHistory);
 	} else {
 		// Default history for first-time visitors
 		spinHistory = [];
-		
+		alert("there is no data found");
 		//document.getElementById('group1').checked = true;
 		//document.getElementById('group2').checked = true;
 		//document.getElementById('group3').checked = true;
