@@ -1,3 +1,5 @@
+
+document.addEventListener("DOMContentLoaded", function () {
 const canvas = document.getElementById('wheel');
 const ctx = canvas.getContext('2d');
 const resultEl = document.getElementById('result');
@@ -50,3 +52,4 @@ function loadState() {
 	
 	displayHistory();  // Re-render the history
 }
+});
