@@ -42,6 +42,8 @@ function addCheckbox(index){
 }
 
 window.onload = function() {
+	loadLocalSpinHistory();
+	
 	for(let i = 1; i <= numOfGroups; i++){
 		addCheckbox(i);
 	}
@@ -230,7 +232,7 @@ function spin() {
   requestAnimationFrame(animateSpin);
 }
 
-function displayHistory() {
+/*function displayHistory() {
 	const historyContainer = document.getElementById('spinHistory');
 	historyContainer.innerHTML = '';  // Clear previous history
 	
@@ -248,7 +250,7 @@ function displayHistory() {
 		}
 		historyContainer.appendChild(spinElement);
 	});
-}
+}*/
 
 function addSpinToHistory(name, message, url) {
 	const timestamp = new Date().toLocaleString("en-GB",{
@@ -261,15 +263,7 @@ function addSpinToHistory(name, message, url) {
 		//minute: '2-digit',
 		});  // Get the current date and time
 		
-	// Load the spin history from localStorage
-	const savedHistory = localStorage.getItem('spinHistory');
-	if (savedHistory) {
-		spinHistory = JSON.parse(savedHistory);
-	} else {
-		// Default history for first-time visitors
-		spinHistory = [];
-	}
-		
+	loadLocalSpinHistory();
 		
 	// Add the new spin to history
 	spinHistory.push({ name, message, url, timestamp });
@@ -280,6 +274,17 @@ function addSpinToHistory(name, message, url) {
 	//}
 	
 	//displayHistory();  // Update the display
+}
+
+function loadLocalSpinHistory(){
+	// Load the spin history from localStorage
+	const savedHistory = localStorage.getItem('spinHistory');
+	if (savedHistory) {
+		spinHistory = JSON.parse(savedHistory);
+	} else {
+		// Default history for first-time visitors
+		spinHistory = [];
+	}
 }
 
 function removeChosenName() {
@@ -312,20 +317,8 @@ function saveState() {
 
 // Load state from localStorage
 function loadState() {
-	/*// Load the spin history from localStorage
-	const savedHistory = localStorage.getItem('spinHistory');
-	if (savedHistory) {
-		spinHistory = JSON.parse(savedHistory);
-	} else {
-		// Default history for first-time visitors
-		spinHistory = [];
-		
-		//document.getElementById('group1').checked = true;
-		//document.getElementById('group2').checked = true;
-		//document.getElementById('group3').checked = true;
-		//document.getElementById('group4').checked = true;
-	}*/
 	
+	//loadLocalSpinHistory();
 	//displayHistory();  // Re-render the history
 	
 	for (let i = 1; i <= numOfGroups; i++){
