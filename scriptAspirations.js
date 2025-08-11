@@ -36,6 +36,18 @@ window.onload = function() {
 	loadState();  // Load the saved state (history + checkbox states)
 };
 
+// Reset packs in localStorage
+document.getElementById('resetPacks').addEventListener('click', function() {
+	// Reset checkbox states
+	for (let i = 1; i <= numOfGroups; i++){
+		localStorage.removeItem('pack' + i + 'Checked');
+		document.getElementById('group' + i).checked = true;
+	}
+	
+	// Reset the wheel
+	updateNames();
+});
+
 function updateNames() {
   names = [];
   

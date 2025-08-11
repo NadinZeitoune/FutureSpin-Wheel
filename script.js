@@ -28,6 +28,18 @@ let spinning = false;
 	updateNames();
 });*/
 
+// Reset packs localStorage
+document.getElementById('clearPacksButton').addEventListener('click', function() {
+	// Reset checkbox states
+	for (let i = 1; i <= numOfGroups; i++){
+		localStorage.removeItem('group' + i + 'Checked');
+		document.getElementById('group' + i).checked = true;
+	}
+	
+	// Reset the wheel
+	updateNames();
+});
+
 function addCheckbox(index){
 	//<label><input type="checkbox" id="group1" /> Base Game</label>
 	const labelE = document.createElement("label");
